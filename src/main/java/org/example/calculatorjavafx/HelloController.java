@@ -1,10 +1,12 @@
 package org.example.calculatorjavafx;
 
+import javafx.beans.binding.NumberExpressionBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import
+import com.fathzer.soft.javaluator.DoubleEvaluator;
+
 
 public class HelloController {
     @FXML
@@ -12,17 +14,15 @@ public class HelloController {
 
     @FXML
     TextField resultBox;
-//    DoubleEvaulator eval =
+    DoubleEvaluator evaluator;
 
-    public HelloController(){
 
+    public HelloController() {
         resultString = "";
-
+        evaluator = new DoubleEvaluator();
     }
 
-//    Documents/Nauka  programowania/Java/JavaFX
     public String resultString;
-
 
 
     @FXML
@@ -30,120 +30,133 @@ public class HelloController {
         resultString = "";
         resultBox.setText(resultString);
     }
-    @FXML
-    public void changeSignOnClick(MouseEvent event){
-        resultString = "-(" + resultString + ")";
-        resultString = String.valueOf(Integer.valueOf(resultString));
-        //te Integery beda domyslnie zle
-        // ale do samych testow prostych liczb z dodawaniem i odejmowaniem bedzie git
-        // a i ta metoda z zmiana znaku sie nie przejmuj na razie, potem to naprawimy
 
+    @FXML
+    public void changeSignOnClick(MouseEvent event) {
+        resultString = "(-1)*(" + resultString + ")";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
 
     }
+
     @FXML
-    public void sevenOnClick(MouseEvent event){
-        resultString +="7";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void sevenOnClick(MouseEvent event) {
+        resultString += "7";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void eightOnClick(MouseEvent event){
-        resultString+= "8";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void eightOnClick(MouseEvent event) {
+        resultString += "8";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void fourOnClick(MouseEvent event){
-        resultString+= "4";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void fourOnClick(MouseEvent event) {
+        resultString += "4";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void zeroOnClick(MouseEvent event){
-        resultString+= "0";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void zeroOnClick(MouseEvent event) {
+        resultString += "0";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void oneOnClick(MouseEvent event){
-        resultString+="1";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void oneOnClick(MouseEvent event) {
+        resultString += "1";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void fiveOnClick(MouseEvent event){
-        resultString +="5";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void fiveOnClick(MouseEvent event) {
+        resultString += "5";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void twoOnClick(MouseEvent event){
-        resultString+="2";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void twoOnClick(MouseEvent event) {
+        resultString += "2";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void percentOnClick(MouseEvent event){
+    public void percentOnClick(MouseEvent event) {
         resultString += "%";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void nineOnClick(MouseEvent event){
-        resultString+="nine";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void nineOnClick(MouseEvent event) {
+        resultString += "nine";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void sixOnClick(MouseEvent event){
-        resultString+="6";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void sixOnClick(MouseEvent event) {
+        resultString += "6";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
 
     }
+
     @FXML
-    public void  threeOnClick(MouseEvent event){
-        resultString+="3";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+    public void threeOnClick(MouseEvent event) {
+        resultString += "3";
+        resultString = String.valueOf(evaluator.evaluate(resultString));
     }
+
     @FXML
-    public void divisionOnClick(MouseEvent event){
+    public void divisionOnClick(MouseEvent event) {
         resultString += "/";
-        resultString = String.valueOf(Integer.valueOf(resultString));
+        resultString = String.valueOf(evaluator.evaluate(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void multiplyOnClick(MouseEvent event){
+    public void multiplyOnClick(MouseEvent event) {
         resultString += "*";
         resultString = String.valueOf(Integer.valueOf(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void downSideOnClick(MouseEvent event){
+    public void downSideOnClick(MouseEvent event) {
         resultString += "-";
         resultString = String.valueOf(Integer.valueOf(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void plusOnClick(MouseEvent event){
+    public void plusOnClick(MouseEvent event) {
         resultString += "+";
         resultString = String.valueOf(Integer.valueOf(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public  void commaOnClick(MouseEvent event){
+    public void commaOnClick(MouseEvent event) {
         resultString += ",";
         resultString = String.valueOf(Integer.valueOf(resultString));
         resultBox.setText(resultString);
     }
+
     @FXML
-    public void equalSignOnClick(MouseEvent event){
+    public void equalSignOnClick(MouseEvent event) {
         resultString += "=";
         resultString = String.valueOf(Integer.valueOf(resultString));
         resultBox.setText(resultString);
     }
-
 
 
 }
